@@ -1,0 +1,6 @@
+# Logfile created on 2014-01-31 14:14:26 +0000 by logger.rb/44203
+I, [2014-01-31T14:14:26.324930 #2270]  INFO -- : 0:  builder (3.2.2) from /Users/petersaxton/.rvm/gems/ruby-2.1.0/specifications/builder-3.2.2.gemspec
+I, [2014-01-31T14:14:26.325326 #2270]  INFO -- : 0:  multi_json (1.8.4) from /Users/petersaxton/.rvm/gems/ruby-2.1.0/specifications/multi_json-1.8.4.gemspec
+I, [2014-01-31T14:14:26.325679 #2270]  INFO -- : 0:  jwt (0.1.11) from /Users/petersaxton/.rvm/gems/ruby-2.1.0/specifications/jwt-0.1.11.gemspec
+I, [2014-01-31T14:14:26.326016 #2270]  INFO -- : 0:  twilio-ruby (3.11.4) from /Users/petersaxton/.rvm/gems/ruby-2.1.0/specifications/twilio-ruby-3.11.4.gemspec
+I, [2014-01-31T14:14:26.326313 #2270]  INFO -- : 0:  bundler (1.5.1) from /Users/petersaxton/.rvm/gems/ruby-2.1.0@global/specifications/bundler-1.5.1.gemspec
