@@ -15,4 +15,10 @@ class Takeaway
 		end
 		strings.join "\n"
 	end
+
+	def arrival_time
+		hr = Time.now.hour + 1
+		min = Time.now.min
+		'%02d:%02d' % [hr, min] 
+	end
 end

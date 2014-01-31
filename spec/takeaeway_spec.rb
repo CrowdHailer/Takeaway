@@ -26,4 +26,10 @@ describe Takeaway do
 			"1. fried chicken;     £1.24\n2. chicken burger;    £2.30"
 		)
 	end
+
+	it 'should return the time 1hr from now' do
+		arrival = chicken_shop.arrival_time
+		puts arrival
+		expect(arrival).to match /\d{2}:\d{2}/
+	end
 end
