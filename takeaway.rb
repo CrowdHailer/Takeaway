@@ -16,7 +16,7 @@ class Takeaway
 
 	def list_dishes
 		strings = dishes.map.with_index do |item, i|
-			"#{i+1}. #{(item.name+';').ljust(19)}£#{'%.2f' % item.price}"
+			"#{i+1}. #{item.inspect}"
 		end
 		strings.join "\n"
 	end

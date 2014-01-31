@@ -5,4 +5,8 @@ class Dish
 	end
 
 	attr_reader :price, :name
+
+	def inspect
+		 "#{(name+';').ljust(19)}£#{'%.2f' % price}"
+	end
 end
