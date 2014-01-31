@@ -1,14 +1,26 @@
 require 'twilio-ruby'
+class Messenger
+	def initialize sid, auth
+		@client = Twilio::REST::Client.new sid, auth
+		@from = "+441985250052"
+	end
+
+	def send_message recipient, message_body
+		content = {to: recipient, from: from, body: message_body}
+	 	client.account.messages.create(content)
+	end
+
+	private
+	attr_reader :client, :from
+end
 
 class Takeaway
 	def initialize
 		@dishes = []
-		@client = Twilio::REST::Client.new("ACc24f3853500f9dc3d1896fcc898a129a", 
-			"593a0f400842001980ebe4eb92239e7f")
-		@message_content = {to: "+447596279256", from: "+441985250052"}
+		@messenger = Messenger.new "ACc24f3853500f9dc3d1896fcc898a129a", "593a0f400842001980ebe4eb92239e7f"
 	end
 	
-	attr_reader :dishes, :message_content, :client
+	attr_reader :dishes, :messenger
 
 	def add_dish item
 		dishes << item
@@ -28,9 +40,7 @@ class Takeaway
 
 	def send_message arrival_time
 		body = "HELL YEAH! Chicken is hitting your neighbourhood at #{arrival_time}"
-		current = message_content.dup
-		current[:body] = body
-		client.account.messages.create(current)
+		messenger.send_message "+447596279256", body
 	end
 
 	def correct_payment order
