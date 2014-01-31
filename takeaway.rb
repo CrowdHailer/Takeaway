@@ -1,6 +1,18 @@
+require 'twilio-ruby'
+class Texter
+	def initialize
+		
+	end
+
+	def send
+	end
+	
+end
 class Takeaway
 	def initialize
 		@dishes = []
+		@client = Twilio::REST::Client.new("ACc24f3853500f9dc3d1896fcc898a129a", "593a0f400842001980ebe4eb92239e7f")
+		@numbers = {to: "+447596279256", from: "+441985250052"}
 	end
 	
 	attr_reader :dishes
@@ -18,11 +30,14 @@ class Takeaway
 
 	def place_order order
 		correct_payment order
-		send_message
+		send_message arrival_time
 	end
 
-	def send_message
-		"dave"
+	def send_message arrival_time
+		body = "HELL YEAH! Chicken is hitting your neighbourhood at " + arrival_time
+		current = @numbers.dup
+		current[:body] = body
+		@client.account.messages.create(current)
 	end
 
 	def correct_payment order
