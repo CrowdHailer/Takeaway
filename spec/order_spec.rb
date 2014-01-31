@@ -17,4 +17,12 @@ describe Order do
 		order.add_item food, 3
 		expect(order.items).to eq([food, food, food])
 	end
+
+	it 'shuld be initialized with total = 0' do
+		expect(order.total).to eq(0)
+	end
+
+	it 'should be possible to give it a total' do
+		
+	end
 end
