@@ -18,7 +18,11 @@ class Takeaway
 
 	def place_order order
 		correct_payment order
+		send_message
+	end
 
+	def send_message
+		"dave"
 	end
 
 	def correct_payment order

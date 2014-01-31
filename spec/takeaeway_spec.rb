@@ -47,5 +47,11 @@ describe Takeaway do
 			expect{chicken_shop.place_order order}.not_to raise_error
 			expect{chicken_shop.place_order wrong_order}.to raise_error "Incorrect total"
 		end
+
+		it 'should try to send confirmation messge if total correct' do
+			chicken_shop.stub(:arrival_time).and_return("12:00")
+			chicken_shop.stub(:send_message).and_return("HELL YEAH! Chicken is hitting your neighbourhood at 12:00")
+			expect(chicken_shop.place_order order).to eq("HELL YEAH! Chicken is hitting your neighbourhood at 12:00")
+		end
 	end
 end
