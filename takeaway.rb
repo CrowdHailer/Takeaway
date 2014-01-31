@@ -34,13 +34,8 @@ class Takeaway
 	end
 
 	def correct_payment order
-		new_orders = order[:dishes].zip(order[:quantities])
-		new_orders.map! do |name, quantity|
-			dish = dishes.find{|dish| dish.name == name}
-			dish.price * quantity
-		end
-		price = new_orders.inject(:+).round(2)
-		price == order[:payment]
+		price = order.items.inject(0) { |total, item| total + item.price }
+		price.round(2) == order.total
 	end
 
 	def arrival_time

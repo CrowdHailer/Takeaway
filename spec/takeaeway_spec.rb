@@ -35,8 +35,20 @@ describe Takeaway do
 	end
 
 	context 'placing an order' do
-		let(:order) { {dishes: ["fried chicken", "chicken burger"], quantities: [2,1], payment: 4.78} }
-		let(:wrong_order) { {dishes: ["fried chicken"], quantities: [1], payment: 24 } }
+		let(:order) do
+			building_order = Order.new
+			building_order.add_item fried_chicken, 2
+			building_order.add_item chicken_burger
+			building_order.total = 4.78 
+			building_order
+		end
+		let(:wrong_order) do
+			building_order = Order.new
+			building_order.add_item fried_chicken
+			building_order.total = 24
+			building_order
+		end
+
 		let(:chicken_shop) do
 			takeaway = Takeaway.new
 			takeaway.add_dish fried_chicken
