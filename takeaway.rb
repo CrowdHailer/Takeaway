@@ -4,4 +4,8 @@ class Takeaway
 	end
 	
 	attr_reader :dishes
+
+	def add_dish item
+		dishes << item
+	end
 end
