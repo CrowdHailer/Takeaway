@@ -1,8 +1,11 @@
 require './takeaway'
 require './dish'
+# require './messenger'
 
 describe Takeaway do
-	let(:takeaway) { Takeaway.new }
+	let(:messenger) { double :messenger}
+	# Messenger.new "ACc24f3853500f9dc3d1896fcc898a129a", "593a0f400842001980ebe4eb92239e7f"
+	let(:takeaway) { Takeaway.new messenger }
 	let(:fried_chicken) { Dish.new "fried chicken", 1.24 }
 	let(:chicken_burger) { Dish.new "chicken burger", 2.30 }
 
@@ -35,6 +38,7 @@ describe Takeaway do
 	end
 
 	context 'placing an order' do
+		let(:messenger) { double :messenger, send_message: "test message sent"}
 		let(:order) do
 			building_order = Order.new
 			building_order.add_item fried_chicken, 2
@@ -50,22 +54,19 @@ describe Takeaway do
 		end
 
 		let(:chicken_shop) do
-			takeaway = Takeaway.new
+			takeaway = Takeaway.new messenger
 			takeaway.add_dish fried_chicken
 			takeaway.add_dish chicken_burger
 			takeaway
 		end
 
 		it 'should check the payment given is correct for the order' do
-			# chicken_shop.stub(:send_message).and_return("HELL YEAH! Chicken is hitting your neighbourhood at 12:00")
 			expect{chicken_shop.place_order order}.not_to raise_error
 			expect{chicken_shop.place_order wrong_order}.to raise_error "Incorrect total"
 		end
 
 		it 'should try to send confirmation messge if payment is correct' do
-			chicken_shop.stub(:arrival_time).and_return("12:00")
-			# chicken_shop.stub(:send_message).and_return("HELL YEAH! Chicken is hitting your neighbourhood at 12:00")
-			expect(chicken_shop.place_order order).to eq("HELL YEAH! Chicken is hitting your neighbourhood at 12:00")
+			expect(chicken_shop.place_order order).to eq("test message sent")
 		end
 	end
 end
