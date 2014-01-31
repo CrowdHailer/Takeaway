@@ -39,8 +39,6 @@ class Takeaway
 	end
 
 	def arrival_time
-		hr = Time.now.hour + 1
-		min = Time.now.min
-		'%02d:%02d' % [hr, min] 
+		'%02d:%02d' % [Time.now.hour + 1, Time.now.min] 
 	end
 end
