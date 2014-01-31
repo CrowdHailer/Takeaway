@@ -23,6 +23,7 @@ describe Order do
 	end
 
 	it 'should be possible to give it a total' do
-		
+		order.total = 27.34
+		expect(order.total).to eq(27.34)
 	end
 end
