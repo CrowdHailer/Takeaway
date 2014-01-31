@@ -16,7 +16,7 @@ class Takeaway
 
 	def list_dishes
 		strings = dishes.map.with_index do |item, i|
-			"#{i+1}. #{(item[:name]+';').ljust(19)}£#{'%.2f' % item[:price]}"
+			"#{i+1}. #{(item.name+';').ljust(19)}£#{'%.2f' % item.price}"
 		end
 		strings.join "\n"
 	end
@@ -36,8 +36,8 @@ class Takeaway
 	def correct_payment order
 		new_orders = order[:dishes].zip(order[:quantities])
 		new_orders.map! do |name, quantity|
-			dish = dishes.find{|dish| dish[:name] == name}
-			dish[:price] * quantity
+			dish = dishes.find{|dish| dish.name == name}
+			dish.price * quantity
 		end
 		price = new_orders.inject(:+).round(2)
 		price == order[:payment]

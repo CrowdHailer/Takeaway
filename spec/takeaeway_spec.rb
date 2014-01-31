@@ -1,9 +1,10 @@
 require './takeaway'
+require './dish'
 
 describe Takeaway do
 	let(:takeaway) { Takeaway.new }
-	let(:fried_chicken) { {name: "fried chicken", price: 1.24} }
-	let(:chicken_burger) { {name: "chicken burger", price: 2.30} }
+	let(:fried_chicken) { Dish.new "fried chicken", 1.24 }
+	let(:chicken_burger) { Dish.new "chicken burger", 2.30 }
 
 	it 'should be initialized with no dishes on the menu' do
 		expect(takeaway.dishes).to be_empty
