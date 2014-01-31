@@ -1,10 +1,8 @@
 require './takeaway'
 require './dish'
-# require './messenger'
 
 describe Takeaway do
 	let(:messenger) { double :messenger}
-	# Messenger.new "ACc24f3853500f9dc3d1896fcc898a129a", "593a0f400842001980ebe4eb92239e7f"
 	let(:takeaway) { Takeaway.new messenger }
 	let(:fried_chicken) { Dish.new "fried chicken", 1.24 }
 	let(:chicken_burger) { Dish.new "chicken burger", 2.30 }
