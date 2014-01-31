@@ -3,5 +3,6 @@ class Array
 		for element in self do
 			init = yield(init, element)
 		end
+		init
 	end
 end
